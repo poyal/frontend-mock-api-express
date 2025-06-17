@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "83e776bf-262e-4220-86a9-6fced4926078",
+		"name": "/albums",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45952156",
+		"_collection_link": "https://poyal-9629670.postman.co/workspace/poyal's-Workspace~3b37ba62-81d0-4946-80d9-e1d1ea316c50/collection/45952156-83e776bf-262e-4220-86a9-6fced4926078?action=share&source=collection_link&creator=45952156"
+	},
+	"item": [
+		{
+			"name": "/albums",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/albums",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"albums"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "I AM",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/albums/page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/albums/page?page=2&size=20",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"albums",
+						"page"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "I AM",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/albums/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/albums/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"albums",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/albums",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"postman_test\",\n    \"userId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/albums",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/albums/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"title\": \"postman_test\",\n    \"userId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/albums/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"albums",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/albums/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/albums/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"albums",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

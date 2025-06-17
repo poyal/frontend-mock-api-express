@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "03f6a3dc-6099-4be5-8bcd-b0e0ce1e88d4",
+		"name": "/users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45952156",
+		"_collection_link": "https://poyal-9629670.postman.co/workspace/poyal's-Workspace~3b37ba62-81d0-4946-80d9-e1d1ea316c50/collection/45952156-03f6a3dc-6099-4be5-8bcd-b0e0ce1e88d4?action=share&source=collection_link&creator=45952156"
+	},
+	"item": [
+		{
+			"name": "/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/users",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "name-Ws",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/users/page?name=name-sX&page=0&size=10",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"users",
+						"page"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "name-sX"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/users/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5011"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name-postman\",\n    \"username\": \"username-postman\",\n    \"email\": \"email-postman\",\n    \"phone\": \"phone-postman\",\n    \"website\": \"website-postman\",\n    \"address\": {\n        \"street\": \"street-postman\",\n        \"suite\": \"suite-postman\",\n        \"city\": \"city-postman\",\n        \"zipcode\": \"zipcode-postman\",\n        \"geo\": {\n            \"lat\": \"lat-postman\",\n            \"lng\": \"lng-postman\"\n        }\n    },\n    \"company\": {\n        \"name\": \"name-postman\",\n        \"catchPhrase\": \"catchPhrase-postman\",\n        \"bs\": \"bs-postman\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/users",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 184,\n    \"name\": \"name-postman\",\n    \"username\": \"username-postman\",\n    \"email\": \"email-postman\",\n    \"phone\": \"phone-postman\",\n    \"website\": \"website-postman\",\n    \"address\": {\n        \"street\": \"street-postman\",\n        \"suite\": \"suite-postman\",\n        \"city\": \"city-postman\",\n        \"zipcode\": \"zipcode-postman\",\n        \"geo\": {\n            \"lat\": \"lat-postman\",\n            \"lng\": \"lng-postman\"\n        }\n    },\n    \"company\": {\n        \"name\": \"name-postman\",\n        \"catchPhrase\": \"catchPhrase-postman\",\n        \"bs\": \"bs-postman\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/users/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "184"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/users/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "184"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

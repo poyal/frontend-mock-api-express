@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "c4c4bcc1-3520-48ae-a4ad-104292041221",
+		"name": "/samples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45952156",
+		"_collection_link": "https://poyal-9629670.postman.co/workspace/poyal's-Workspace~3b37ba62-81d0-4946-80d9-e1d1ea316c50/collection/45952156-c4c4bcc1-3520-48ae-a4ad-104292041221?action=share&source=collection_link&creator=45952156"
+	},
+	"item": [
+		{
+			"name": "/samples",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/samples",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"samples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/samples/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/todos/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"todos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/samples",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name-postman\",\n    \"flag\": false,\n    \"enumA\": \"TYPE_A_4\",\n    \"enumB\": \"TYPE_B_3\",\n    \"date\": \"20250326\",\n    \"dateTime\": \"2025/03/26 00:21:11\",\n    \"time\": \"18~06~31\",\n    \"item\": {\n      \"id\": 1,\n      \"name\": \"name-postman\",\n      \"flag\": false\n    },\n    \"items\": [\n      {\n        \"id\": 1,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      },\n      {\n        \"id\": 2,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      },\n      {\n        \"id\": 3,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      },\n      {\n        \"id\": 4,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      }\n    ]\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/samples",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"samples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/samples/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4024,\n    \"name\": \"name-postman\",\n    \"flag\": false,\n    \"enumA\": \"TYPE_A_4\",\n    \"enumB\": \"TYPE_B_3\",\n    \"date\": \"20250326\",\n    \"dateTime\": \"2025/03/26 00:21:11\",\n    \"time\": \"18~06~31\",\n    \"item\": {\n      \"id\": 1,\n      \"name\": \"name-postman\",\n      \"flag\": false\n    },\n    \"items\": [\n      {\n        \"id\": 1,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      },\n      {\n        \"id\": 2,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      },\n      {\n        \"id\": 3,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      },\n      {\n        \"id\": 4,\n        \"name\": \"name-postman\",\n        \"flag\": true\n      }\n    ]\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/samples/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"samples",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4024"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/samples/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/samples/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"samples",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4024"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
