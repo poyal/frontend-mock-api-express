@@ -1,4 +1,6 @@
 import type {ClassConstructor} from 'class-transformer';
+import dayjs from 'dayjs';
+import CustomParseFormat from 'dayjs/plugin/customParseFormat';
 
 // @ts-ignore
 import {defaultMetadataStorage} from 'class-transformer/cjs/storage';
@@ -7,7 +9,9 @@ import {Injectable} from '@/core/decorator';
 import Container from '@/core/container';
 import Mapper from '@/core/service/mapper.service';
 import {EnumAbstract} from '@/core/enum';
-import dayjs from 'dayjs';
+
+dayjs().locale('ko');
+dayjs.extend(CustomParseFormat);
 
 @Injectable()
 export class GeneratorService {

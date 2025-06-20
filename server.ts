@@ -3,8 +3,6 @@ import cors from 'cors';
 import express, {Application} from 'express';
 import {attachControllers} from '@decorators/express';
 import bodyParser from 'body-parser';
-import dayjs from 'dayjs';
-import CustomParseFormat from 'dayjs/plugin/customParseFormat';
 
 import {Controllers} from '@/main';
 
@@ -15,8 +13,6 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors({origin: '*'}));
 app.use('/uploads/images', express.static('public/upload'));
-dayjs().locale('ko');
-dayjs.extend(CustomParseFormat);
 
 const PORT: number = 8080;
 app

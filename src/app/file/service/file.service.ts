@@ -1,9 +1,13 @@
 import fs from 'fs';
 import dayjs from 'dayjs';
+import CustomParseFormat from 'dayjs/plugin/customParseFormat';
 
 import {Injectable} from '@/core/decorator';
 
 import {FileModel} from '@/app/file/model/file.model';
+
+dayjs().locale('ko');
+dayjs.extend(CustomParseFormat);
 
 @Injectable()
 export class FileService {

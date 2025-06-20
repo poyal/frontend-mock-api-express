@@ -1,10 +1,14 @@
 import type {TransformFnParams} from 'class-transformer';
 import dayjs from 'dayjs';
+import CustomParseFormat from 'dayjs/plugin/customParseFormat';
 
 import Container from '@/core/container';
 import {Injectable} from '@/core/decorator';
 import {EnumAbstract} from '@/core/enum/enum.abstract';
 import {CheckerService} from '@/core/service/checker.service';
+
+dayjs().locale('ko');
+dayjs.extend(CustomParseFormat);
 
 export interface DateFormat {
   toPlain: string | undefined;
