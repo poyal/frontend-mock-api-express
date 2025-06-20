@@ -1,7 +1,5 @@
-import {LocalTime, LocalDateTime, LocalDate} from '@js-joda/core';
-
 import {Column, Attribute, Reference, DateFormat} from '@/core/decorator';
-import {EnumAbstract}                             from '@/core/enum';
+import {EnumAbstract} from '@/core/enum';
 
 import {TypeAEnum} from '@/app/sample/enum/type-a.enum';
 import {TypeBEnum} from '@/app/sample/enum/type-b.enum';
@@ -31,22 +29,22 @@ export namespace SampleEntity {
     enumB!: TypeBEnum;
 
     @Attribute('date')
-    @Reference(() => LocalDate)
-    @Column(() => LocalDate)
-    @DateFormat('yyyyMMdd')
-    date!: LocalDate;
+    @Reference(() => Date)
+    @Column(() => Date)
+    @DateFormat('YYYYMMDD')
+    date!: Date;
 
     @Attribute('dateTime')
-    @Reference(() => LocalDateTime)
-    @Column(() => LocalDateTime)
-    @DateFormat('yyyy/MM/dd HH:mm:ss')
-    dateTime!: LocalDateTime;
+    @Reference(() => Date)
+    @Column(() => Date)
+    @DateFormat('YYYY/MM/DD HH:mm:ss')
+    dateTime!: Date;
 
     @Attribute('time')
-    @Reference(() => LocalTime)
-    @Column(() => LocalTime)
+    @Reference(() => Date)
+    @Column(() => Date)
     @DateFormat('HH~mm~ss')
-    time!: LocalTime;
+    time!: Date;
 
     @Attribute('item')
     @Reference(() => SampleEntity.Item)
@@ -73,4 +71,3 @@ export namespace SampleEntity {
     flag!: boolean;
   }
 }
-

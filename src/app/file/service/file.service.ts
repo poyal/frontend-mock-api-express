@@ -1,5 +1,5 @@
-import fs                             from 'fs';
-import {LocalDate, DateTimeFormatter} from '@js-joda/core';
+import fs from 'fs';
+import dayjs from 'dayjs';
 
 import {Injectable} from '@/core/decorator';
 
@@ -17,7 +17,7 @@ export class FileService {
     const exts: string[] = file.originalname.split('.');
     const id: string = this.setString();
     const path: string = this.generatePath();
-    const name: string = `${id}.${exts.pop()}`; ``;
+    const name: string = `${id}.${exts.pop()}`;
 
     if (!this.isExistsPath(path)) {
       fs.mkdirSync(`${this.rootPath}/${path}`, {recursive: true});
@@ -39,7 +39,7 @@ export class FileService {
   }
 
   private generatePath(): string {
-    return LocalDate.now().format(DateTimeFormatter.ofPattern('yyyyMMdd'));
+    return dayjs().format('YYYYMMDD');
   }
 
   private setString(length: number = 32): string {

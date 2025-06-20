@@ -1,7 +1,16 @@
-import {LocalDate, LocalDateTime, LocalTime} from '@js-joda/core';
-
-import {Attribute, XssRequest, XssResponse, Reference, DateFormat}                                                                                    from '@/core/decorator';
-import {IsInt, IsNotEmpty, IsString, MaxLength, IsBoolean, IsEnum, IsLocalDate, IsLocalDateTime, IsLocalTime, ValidateNested, IsArray, ArrayNotEmpty} from '@/core/decorator/validator';
+import {Attribute, DateFormat, Reference, XssRequest, XssResponse} from '@/core/decorator';
+import {
+  ArrayNotEmpty,
+  IsArray,
+  IsBoolean,
+  IsDate,
+  IsEnum,
+  IsInt,
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+  ValidateNested
+} from '@/core/decorator/validator';
 
 import {TypeAEnum} from '@/app/sample/enum/type-a.enum';
 import {TypeBEnum} from '@/app/sample/enum/type-b.enum';
@@ -11,117 +20,146 @@ export namespace SampleModel {
     export class Add {
       @Attribute('name')
       @XssRequest()
-      @IsString() @IsNotEmpty() @MaxLength(200)
+      @IsString()
+      @IsNotEmpty()
+      @MaxLength(200)
       name!: string;
 
       @Attribute('flag')
-      @IsBoolean() @IsNotEmpty()
+      @IsBoolean()
+      @IsNotEmpty()
       flag!: boolean;
 
       @Attribute('enumA')
       @Reference(() => TypeAEnum)
-      @IsNotEmpty() @IsEnum(TypeAEnum)
+      @IsNotEmpty()
+      @IsEnum(TypeAEnum)
       enumA!: TypeAEnum;
 
       @Attribute('enumB')
       @Reference(() => TypeBEnum)
-      @IsNotEmpty() @IsEnum(TypeBEnum)
+      @IsNotEmpty()
+      @IsEnum(TypeBEnum)
       enumB!: TypeBEnum;
 
       @Attribute('date')
-      @Reference(() => LocalDate)
-      @DateFormat('yyyyMMdd')
-      @IsNotEmpty() @IsLocalDate()
-      date!: LocalDate;
+      @Reference(() => Date)
+      @DateFormat('YYYYMMDD')
+      @IsNotEmpty()
+      @IsDate()
+      date!: Date;
 
       @Attribute('dateTime')
-      @Reference(() => LocalDateTime)
-      @DateFormat('yyyy/MM/dd HH:mm:ss')
-      @IsNotEmpty() @IsLocalDateTime()
-      dateTime!: LocalDateTime;
+      @Reference(() => Date)
+      @DateFormat('YYYY/MM/DD HH:mm:ss')
+      @IsNotEmpty()
+      @IsDate()
+      dateTime!: Date;
 
       @Attribute('time')
-      @Reference(() => LocalTime)
+      @Reference(() => Date)
       @DateFormat('HH~mm~ss')
-      @IsNotEmpty() @IsLocalTime()
-      time!: LocalTime;
+      @IsNotEmpty()
+      @IsDate()
+      time!: Date;
 
       @Attribute('item')
       @Reference(() => SampleModel.Request.Item)
-      @IsNotEmpty() @ValidateNested()
+      @IsNotEmpty()
+      @ValidateNested()
       item!: SampleModel.Request.Item;
 
       @Attribute('items')
       @Reference(() => SampleModel.Request.Item)
-      @IsArray() @IsNotEmpty() @ArrayNotEmpty() @ValidateNested()
+      @IsArray()
+      @IsNotEmpty()
+      @ArrayNotEmpty()
+      @ValidateNested()
       items!: SampleModel.Request.Item[];
     }
 
     export class Modify {
       @Attribute('id')
-      @IsInt() @IsNotEmpty()
+      @IsInt()
+      @IsNotEmpty()
       id!: number;
 
       @Attribute('name')
       @XssRequest()
-      @IsString() @IsNotEmpty() @MaxLength(200)
+      @IsString()
+      @IsNotEmpty()
+      @MaxLength(200)
       name!: string;
 
       @Attribute('flag')
-      @IsBoolean() @IsNotEmpty()
+      @IsBoolean()
+      @IsNotEmpty()
       flag!: boolean;
 
       @Attribute('enumA')
       @Reference(() => TypeAEnum)
-      @IsNotEmpty() @IsEnum(TypeAEnum)
+      @IsNotEmpty()
+      @IsEnum(TypeAEnum)
       enumA!: TypeAEnum;
 
       @Attribute('enumB')
       @Reference(() => TypeBEnum)
-      @IsNotEmpty() @IsEnum(TypeBEnum)
+      @IsNotEmpty()
+      @IsEnum(TypeBEnum)
       enumB!: TypeBEnum;
 
       @Attribute('date')
-      @Reference(() => LocalDate)
-      @DateFormat('yyyyMMdd')
-      @IsNotEmpty() @IsLocalDate()
-      date!: LocalDate;
+      @Reference(() => Date)
+      @DateFormat('YYYYMMDD')
+      @IsNotEmpty()
+      @IsDate()
+      date!: Date;
 
       @Attribute('dateTime')
-      @Reference(() => LocalDateTime)
-      @DateFormat('yyyy/MM/dd HH:mm:ss')
-      @IsNotEmpty() @IsLocalDateTime()
-      dateTime!: LocalDateTime;
+      @Reference(() => Date)
+      @DateFormat('YYYY/MM/DD HH:mm:ss')
+      @IsNotEmpty()
+      @IsDate()
+      dateTime!: Date;
 
       @Attribute('time')
-      @Reference(() => LocalTime)
+      @Reference(() => Date)
       @DateFormat('HH~mm~ss')
-      @IsNotEmpty() @IsLocalTime()
-      time!: LocalTime;
+      @IsNotEmpty()
+      @IsDate()
+      time!: Date;
 
       @Attribute('item')
       @Reference(() => SampleModel.Request.Item)
-      @IsNotEmpty() @ValidateNested()
+      @IsNotEmpty()
+      @ValidateNested()
       item!: SampleModel.Request.Item;
 
       @Attribute('items')
       @Reference(() => SampleModel.Request.Item)
-      @IsArray() @IsNotEmpty() @ArrayNotEmpty() @ValidateNested()
+      @IsArray()
+      @IsNotEmpty()
+      @ArrayNotEmpty()
+      @ValidateNested()
       items!: SampleModel.Request.Item[];
     }
 
     export class Item {
       @Attribute('id')
-      @IsInt() @IsNotEmpty()
+      @IsInt()
+      @IsNotEmpty()
       id!: number;
 
       @Attribute('name')
       @XssRequest()
-      @IsString() @IsNotEmpty() @MaxLength(200)
+      @IsString()
+      @IsNotEmpty()
+      @MaxLength(200)
       name!: string;
 
       @Attribute('flag')
-      @IsBoolean() @IsNotEmpty()
+      @IsBoolean()
+      @IsNotEmpty()
       flag!: boolean;
     }
   }
@@ -147,19 +185,19 @@ export namespace SampleModel {
       enumB!: TypeBEnum;
 
       @Attribute('date')
-      @Reference(() => LocalDate)
-      @DateFormat('yyyyMMdd')
-      date!: LocalDate;
+      @Reference(() => Date)
+      @DateFormat('YYYYMMDD')
+      date!: Date;
 
       @Attribute('dateTime')
-      @Reference(() => LocalDateTime)
-      @DateFormat('yyyy/MM/dd HH:mm:ss')
-      dateTime!: LocalDateTime;
+      @Reference(() => Date)
+      @DateFormat('YYYY/MM/DD HH:mm:ss')
+      dateTime!: Date;
 
       @Attribute('time')
-      @Reference(() => LocalTime)
+      @Reference(() => Date)
       @DateFormat('HH~mm~ss')
-      time!: LocalTime;
+      time!: Date;
 
       @Attribute('item')
       @Reference(() => SampleModel.Response.Item)
@@ -190,19 +228,19 @@ export namespace SampleModel {
       enumB!: TypeBEnum;
 
       @Attribute('date')
-      @Reference(() => LocalDate)
-      @DateFormat('yyyyMMdd')
-      date!: LocalDate;
+      @Reference(() => Date)
+      @DateFormat('YYYYMMDD')
+      date!: Date;
 
       @Attribute('dateTime')
-      @Reference(() => LocalDateTime)
-      @DateFormat('yyyy/MM/dd HH:mm:ss')
-      dateTime!: LocalDateTime;
+      @Reference(() => Date)
+      @DateFormat('YYYY/MM/DD HH:mm:ss')
+      dateTime!: Date;
 
       @Attribute('time')
-      @Reference(() => LocalTime)
+      @Reference(() => Date)
       @DateFormat('HH~mm~ss')
-      time!: LocalTime;
+      time!: Date;
 
       @Attribute('item')
       @Reference(() => SampleModel.Response.Item)

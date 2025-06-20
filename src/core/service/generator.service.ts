@@ -1,13 +1,13 @@
-import {LocalDate, nativeJs, DateTimeFormatter, LocalDateTime, LocalTime} from '@js-joda/core';
-import type {ClassConstructor}                                            from 'class-transformer';
+import type {ClassConstructor} from 'class-transformer';
 
 // @ts-ignore
 import {defaultMetadataStorage} from 'class-transformer/cjs/storage';
 
-import {Injectable}   from '@/core/decorator';
-import Container      from '@/core/container';
-import Mapper         from '@/core/service/mapper.service';
+import {Injectable} from '@/core/decorator';
+import Container from '@/core/container';
+import Mapper from '@/core/service/mapper.service';
 import {EnumAbstract} from '@/core/enum';
+import dayjs from 'dayjs';
 
 @Injectable()
 export class GeneratorService {
@@ -49,16 +49,8 @@ export class GeneratorService {
             (target as any)[key] = this.setBoolean();
             break;
 
-          case LocalDate:
-            (target as any)[key] = this.setLocalDate(format);
-            break;
-
-          case LocalDateTime:
-            (target as any)[key] = this.setLocalDateTime(format);
-            break;
-
-          case LocalTime:
-            (target as any)[key] = this.setLocalTime(format);
+          case Date:
+            (target as any)[key] = this.setDate(format);
             break;
 
           case EnumAbstract:
@@ -111,34 +103,15 @@ export class GeneratorService {
   }
 
   private getRandomDate(): Date {
-    return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+    return new Date(+new Date() - Math.floor(Math.random() * 10000000000));
   }
 
-  private setLocalDate(format: string | undefined): string {
-    let dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
+  private setDate(format: string | undefined): string {
     if (!!format) {
-      dateTimeFormatter = DateTimeFormatter.ofPattern(format);
+      return dayjs(this.getRandomDate()).format(format);
     }
 
-    return LocalDate.from(nativeJs(this.getRandomDate())).format(dateTimeFormatter);
-  }
-
-  private setLocalDateTime(format: string | undefined): string {
-    let dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-    if (!!format) {
-      dateTimeFormatter = DateTimeFormatter.ofPattern(format);
-    }
-
-    return LocalDateTime.from(nativeJs(this.getRandomDate())).format(dateTimeFormatter);
-  }
-
-  private setLocalTime(format: string | undefined): string {
-    let dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
-    if (!!format) {
-      dateTimeFormatter = DateTimeFormatter.ofPattern(format);
-    }
-
-    return LocalTime.from(nativeJs(this.getRandomDate())).format(dateTimeFormatter);
+    return dayjs(this.getRandomDate()).toISOString();
   }
 
   private setEnum(enums: any) {

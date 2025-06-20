@@ -1,9 +1,9 @@
-import type {TransformFnParams}                                 from 'class-transformer';
-import {DateTimeFormatter, LocalDate, LocalDateTime, LocalTime} from '@js-joda/core';
+import type {TransformFnParams} from 'class-transformer';
+import dayjs from 'dayjs';
 
-import Container        from '@/core/container';
-import {Injectable}     from '@/core/decorator';
-import {EnumAbstract}   from '@/core/enum/enum.abstract';
+import Container from '@/core/container';
+import {Injectable} from '@/core/decorator';
+import {EnumAbstract} from '@/core/enum/enum.abstract';
 import {CheckerService} from '@/core/service/checker.service';
 
 export interface DateFormat {
@@ -72,16 +72,15 @@ export class ReferenceService {
     return params;
   }
 
-
-  toLocalDate(value: TransformFnParams, format: string | undefined): any {
+  toDateInstance(value: TransformFnParams, format: string | undefined): any {
     const params = value.obj[value.key];
 
     if (!!params && this.typeChecker.isString(params)) {
       if (!!format) {
-        return LocalDate.parse(params, DateTimeFormatter.ofPattern(format));
+        return dayjs(params, format).toDate();
       }
 
-      return LocalDate.parse(params, DateTimeFormatter.ISO_LOCAL_DATE);
+      return dayjs(params).toDate();
     }
 
     if (this.typeChecker.isArray(params)) {
@@ -91,76 +90,10 @@ export class ReferenceService {
 
         if (!!param && this.typeChecker.isString(param)) {
           if (!!format) {
-            pushed = LocalDate.parse(param, DateTimeFormatter.ofPattern(format));
+            pushed = dayjs(param, format).toDate();
           }
 
-          pushed = LocalDate.parse(param, DateTimeFormatter.ISO_LOCAL_DATE);
-        }
-
-        returnArray.push(pushed);
-      });
-
-      return returnArray;
-    }
-
-    return params;
-  }
-
-  toLocalDateTime(value: TransformFnParams, format: string | undefined): any {
-    const params = value.obj[value.key];
-
-    if (!!params && this.typeChecker.isString(params)) {
-      if (!!format) {
-        return LocalDateTime.parse(params, DateTimeFormatter.ofPattern(format));
-      }
-
-      return LocalDateTime.parse(params, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-    }
-
-    if (this.typeChecker.isArray(params)) {
-      const returnArray: any[] = [];
-      params.forEach((param: any) => {
-        let pushed: any = param;
-
-        if (!!param && this.typeChecker.isString(param)) {
-          if (!!format) {
-            pushed = LocalDateTime.parse(param, DateTimeFormatter.ofPattern(format));
-          }
-
-          pushed = LocalDateTime.parse(param, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-        }
-
-        returnArray.push(pushed);
-      });
-
-      return returnArray;
-    }
-
-    return params;
-  }
-
-  toLocalTime(value: TransformFnParams, format: string | undefined): any {
-    const params = value.obj[value.key];
-
-    if (!!params && this.typeChecker.isString(params)) {
-      if (!!format) {
-        return LocalTime.parse(params, DateTimeFormatter.ofPattern(format));
-      }
-
-      return LocalTime.parse(params, DateTimeFormatter.ISO_LOCAL_TIME);
-    }
-
-    if (this.typeChecker.isArray(params)) {
-      const returnArray: any[] = [];
-      params.forEach((param: any) => {
-        let pushed: any = param;
-
-        if (!!param && this.typeChecker.isString(param)) {
-          if (!!format) {
-            pushed = LocalTime.parse(param, DateTimeFormatter.ofPattern(format));
-          }
-
-          pushed = LocalTime.parse(param);
+          pushed = dayjs(param).toDate();
         }
 
         returnArray.push(pushed);
@@ -175,28 +108,12 @@ export class ReferenceService {
   fromStringDate(value: TransformFnParams, format: string | undefined): any {
     const params = value.obj[value.key];
 
-    if (params instanceof LocalDateTime) {
+    if (params instanceof Date) {
       if (!!format) {
-        return params.format(DateTimeFormatter.ofPattern(format));
+        return dayjs(params).format(format);
       }
 
-      return params.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-    }
-
-    if (params instanceof LocalDate) {
-      if (!!format) {
-        return params.format(DateTimeFormatter.ofPattern(format));
-      }
-
-      return params.format(DateTimeFormatter.ISO_LOCAL_DATE);
-    }
-
-    if (params instanceof LocalTime) {
-      if (!!format) {
-        return params.format(DateTimeFormatter.ofPattern(format));
-      }
-
-      return params.format(DateTimeFormatter.ISO_LOCAL_TIME);
+      return dayjs(params).toISOString();
     }
 
     if (this.typeChecker.isArray(params)) {
@@ -204,27 +121,11 @@ export class ReferenceService {
       params.forEach((param: any) => {
         let pushed: any = param;
 
-        if (param instanceof LocalDateTime) {
+        if (param instanceof Date) {
           if (!!format) {
-            pushed = param.format(DateTimeFormatter.ofPattern(format));
+            pushed = dayjs(param).format(format);
           } else {
-            pushed = param.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-          }
-        }
-
-        if (param instanceof LocalDate) {
-          if (!!format) {
-            pushed = param.format(DateTimeFormatter.ofPattern(format));
-          } else {
-            pushed = param.format(DateTimeFormatter.ISO_LOCAL_DATE);
-          }
-        }
-
-        if (param instanceof LocalTime) {
-          if (!!format) {
-            pushed = param.format(DateTimeFormatter.ofPattern(format));
-          } else {
-            pushed = param.format(DateTimeFormatter.ISO_LOCAL_TIME);
+            pushed = dayjs(param).toISOString();
           }
         }
 

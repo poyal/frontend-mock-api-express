@@ -1,11 +1,11 @@
-import {Response}                                                     from 'express';
+import {Response} from 'express';
 import {Controller, Get, Query, Params, Post, Body, Put, Delete, Res} from '@decorators/express';
 
 import Container from '@/core/container';
 
 import {UserModel} from '@/app/user/model/user.model';
 import UserService from '@/app/user/service/user.service';
-import Mapper      from '@/core/service/mapper.service';
+import Mapper from '@/core/service/mapper.service';
 
 @Controller('/users')
 export default class UserController {
@@ -18,7 +18,7 @@ export default class UserController {
       res.status(200).json(this.service.getList(query));
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -28,7 +28,7 @@ export default class UserController {
       res.status(200).json(this.service.getPage(query));
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -39,7 +39,7 @@ export default class UserController {
       res.status(200).json(one);
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -50,7 +50,7 @@ export default class UserController {
       res.status(200).json(result);
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -61,7 +61,7 @@ export default class UserController {
       res.status(200).json(result);
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -72,7 +72,7 @@ export default class UserController {
       res.status(200).json();
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 }

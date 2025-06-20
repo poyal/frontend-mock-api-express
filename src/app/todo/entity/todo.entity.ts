@@ -1,7 +1,5 @@
-import {LocalDateTime} from '@js-joda/core';
-
 import {Column, Attribute, Reference} from '@/core/decorator';
-import {EnumAbstract}                 from '@/core/enum';
+import {EnumAbstract} from '@/core/enum';
 
 import {CategoryTypeEnum} from '@/app/todo/enum/category-type.enum';
 
@@ -24,9 +22,9 @@ export namespace TodoEntity {
     completeYn!: boolean;
 
     @Attribute('endDate')
-    @Reference(() => LocalDateTime)
-    @Column(() => LocalDateTime)
-    endDate!: LocalDateTime;
+    @Reference(() => Date)
+    @Column(() => Date)
+    endDate!: Date;
 
     @Attribute('categoryType')
     @Reference(() => CategoryTypeEnum)
@@ -34,4 +32,3 @@ export namespace TodoEntity {
     categoryType!: CategoryTypeEnum;
   }
 }
-

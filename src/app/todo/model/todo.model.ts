@@ -1,7 +1,5 @@
-import {LocalDateTime} from '@js-joda/core';
-
-import {Attribute, XssRequest, XssResponse, Reference}                                   from '@/core/decorator';
-import {IsNotEmpty, IsString, MaxLength, IsOptional, IsLocalDateTime, IsEnum, IsBoolean} from '@/core/decorator/validator';
+import {Attribute, XssRequest, XssResponse, Reference} from '@/core/decorator';
+import {IsNotEmpty, IsString, MaxLength, IsOptional, IsEnum, IsBoolean, IsDate} from '@/core/decorator/validator';
 
 import {CategoryTypeEnum} from '@/app/todo/enum/category-type.enum';
 
@@ -36,50 +34,63 @@ export namespace TodoModel {
     export class Add {
       @Attribute('타이틀')
       @XssRequest()
-      @IsNotEmpty() @IsString() @MaxLength(100)
+      @IsNotEmpty()
+      @IsString()
+      @MaxLength(100)
       title!: string;
 
       @Attribute('설명')
       @XssRequest()
-      @IsOptional() @IsString() @MaxLength(500)
+      @IsOptional()
+      @IsString()
+      @MaxLength(500)
       description!: string;
 
       @Attribute('기한')
-      @Reference(() => LocalDateTime)
-      @IsOptional() @IsLocalDateTime()
-      endDate!: LocalDateTime;
+      @Reference(() => Date)
+      @IsOptional()
+      @IsDate()
+      endDate!: Date;
 
       @Attribute('종류타입')
       @Reference(() => CategoryTypeEnum)
-      @IsNotEmpty() @IsEnum(CategoryTypeEnum)
+      @IsNotEmpty()
+      @IsEnum(CategoryTypeEnum)
       categoryType!: CategoryTypeEnum;
     }
 
     export class Modify {
       @Attribute('타이틀')
       @XssRequest()
-      @IsNotEmpty() @IsString() @MaxLength(100)
+      @IsNotEmpty()
+      @IsString()
+      @MaxLength(100)
       title!: string;
 
       @Attribute('설명')
       @XssRequest()
-      @IsOptional() @IsString() @MaxLength(500)
+      @IsOptional()
+      @IsString()
+      @MaxLength(500)
       description!: string | undefined;
 
       @Attribute('기한')
-      @Reference(() => LocalDateTime)
-      @IsOptional() @IsLocalDateTime()
-      endDate!: LocalDateTime | undefined;
+      @Reference(() => Date)
+      @IsOptional()
+      @IsDate()
+      endDate!: Date | undefined;
 
       @Attribute('종류타입')
       @Reference(() => CategoryTypeEnum)
-      @IsNotEmpty() @IsEnum(CategoryTypeEnum)
+      @IsNotEmpty()
+      @IsEnum(CategoryTypeEnum)
       categoryType!: CategoryTypeEnum;
     }
 
     export class Complete {
       @Attribute('완료여부')
-      @IsNotEmpty() @IsBoolean()
+      @IsNotEmpty()
+      @IsBoolean()
       completeYn!: boolean;
     }
   }
@@ -101,8 +112,8 @@ export namespace TodoModel {
       completeYn!: boolean;
 
       @Attribute('기한')
-      @Reference(() => LocalDateTime)
-      endDate!: LocalDateTime;
+      @Reference(() => Date)
+      endDate!: Date;
 
       @Attribute('종류타입')
       @Reference(() => CategoryTypeEnum)
@@ -125,8 +136,8 @@ export namespace TodoModel {
       completeYn!: boolean;
 
       @Attribute('기한')
-      @Reference(() => LocalDateTime)
-      endDate!: LocalDateTime;
+      @Reference(() => Date)
+      endDate!: Date;
 
       @Attribute('종류타입')
       @Reference(() => CategoryTypeEnum)

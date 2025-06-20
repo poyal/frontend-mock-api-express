@@ -1,4 +1,4 @@
-import {Response}                                                     from 'express';
+import {Response} from 'express';
 import {Controller, Get, Query, Params, Post, Body, Put, Delete, Res} from '@decorators/express';
 
 import Container from '@/core/container';
@@ -16,7 +16,7 @@ export default class AlbumController {
       res.status(200).json(this.service.getList(query));
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -26,7 +26,7 @@ export default class AlbumController {
       res.status(200).json(this.service.getPage(query));
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -37,7 +37,7 @@ export default class AlbumController {
       res.status(200).json(one);
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -48,7 +48,7 @@ export default class AlbumController {
       res.status(200).json(result);
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -59,7 +59,7 @@ export default class AlbumController {
       res.status(200).json(result);
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -70,7 +70,7 @@ export default class AlbumController {
       res.status(200).json();
     } catch (error: unknown) {
       res.status(406).json(error);
-      console.log(error);
+      console.error(error);
     }
   }
 }
