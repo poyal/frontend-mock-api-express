@@ -18,12 +18,12 @@ const PORT: number = 8080;
 app
   .listen(PORT, 'localhost', function () {
     const server: string = `http://localhost:${PORT}`;
-    console.log(`SERVER: ${server}`);
-    console.log(`IMAGE UPLOAD: ${server}/uploads/images`);
+    console.info(`SERVER: ${server}`);
+    console.info(`IMAGE UPLOAD: ${server}/uploads/images`);
   })
   .on('error', (error: any) => {
     if (error.code === 'EADDRINUSE') {
-      console.log('Error: address already in use');
+      console.error('Error: address already in use');
     } else {
       console.error(error);
     }
