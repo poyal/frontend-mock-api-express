@@ -11,6 +11,9 @@ export namespace FileModel {
 
       @Attribute('파일명')
       name!: string;
+
+      @Attribute('용량')
+      size!: number;
     }
   }
 }

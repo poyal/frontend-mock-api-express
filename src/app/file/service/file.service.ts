@@ -22,6 +22,7 @@ export class FileService {
     const id: string = this.setString();
     const path: string = this.generatePath();
     const name: string = `${id}.${exts.pop()}`;
+    const size: number = file.size;
 
     if (!this.isExistsPath(path)) {
       fs.mkdirSync(`${this.rootPath}/${path}`, {recursive: true});
@@ -34,6 +35,7 @@ export class FileService {
     returnValue.id = id;
     returnValue.path = `${path}/${name}`;
     returnValue.name = Buffer.from(file.originalname, 'latin1').toString('utf8');
+    returnValue.size = size;
 
     return returnValue;
   }
