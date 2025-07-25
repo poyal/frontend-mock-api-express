@@ -33,7 +33,7 @@ export class FileService {
 
     returnValue.id = id;
     returnValue.path = `${path}/${name}`;
-    returnValue.name = file.originalname;
+    returnValue.name = Buffer.from(file.originalname, 'latin1').toString('utf8');
 
     return returnValue;
   }
